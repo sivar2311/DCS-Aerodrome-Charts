@@ -1,0 +1,38 @@
+name: Chart error / Kartenfehler
+description: Something on a chart is wrong or missing / Etwas auf einer Karte ist falsch oder fehlt
+labels: ["chart error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! The charts are generated automatically, so the error will be fixed in the generator.
+        Danke! Die Karten werden automatisch erzeugt, der Fehler wird deshalb im Generator behoben.
+  - type: dropdown
+    id: map
+    attributes:
+      label: Map / Karte
+      options:
+        - Germany Cold War
+        - Persian Gulf
+        - Syria
+    validations:
+      required: true
+  - type: input
+    id: sheet
+    attributes:
+      label: Sheet / Blatt
+      description: File name, e.g. / Dateiname, z. B. 14_GND_OMAA_Abu Dhabi Intl_P1
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong? / Was ist falsch?
+      description: And, if you know it, what is right (e.g. what you see in DCS). / Und, wenn bekannt, was richtig wäre (z. B. was du in DCS siehst).
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Optional, drag an image here. / Optional, Bild hierher ziehen.

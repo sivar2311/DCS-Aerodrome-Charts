@@ -1,0 +1,72 @@
+# Release with one ZIP of PNG sheets per map folder (<Map>.zip).
+# Start: push a tag (e.g. v2026.11.19), or run it by hand (Actions → Release → Run workflow);
+# by hand, the tag defaults to today's date.
+# The release notes list per map the sheets that are new, changed or removed since the previous release.
+name: Release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag (empty = vYYYY.MM.DD of today)'
+        required: false
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Tag
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then tag="${GITHUB_REF_NAME}"
+          else tag="${{ github.event.inputs.tag }}"; [ -n "$tag" ] || tag="v$(date -u +%Y.%m.%d)"; fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          prev=$(git tag --list 'v*' --sort=-creatordate | grep -vx "$tag" | head -1)
+          echo "prev=$prev" >> "$GITHUB_OUTPUT"
+      - name: ZIP files and release notes
+        env:
+          PREV: ${{ steps.tag.outputs.prev }}
+        run: |
+          mkdir dist
+          {
+            echo "One ZIP file per map with all PNG sheets. / Eine ZIP-Datei je Karte mit allen PNG-Blättern."
+            echo
+            for d in */png; do
+              m=${d%/png}
+              (cd "$d" && zip -q -9 "../../dist/$m.zip" *.png)
+              n=$(ls "$d"/*.png | grep -vc 00_01_General_Map)
+              echo "### $m"
+              echo
+              echo "$n sheets"
+              if [ -n "$PREV" ]; then
+                for k in A:new M:changed D:removed; do
+                  list=$(git diff --name-status --no-renames "$PREV" HEAD -- "$m/png/" | awk -v s="${k%%:*}" '$1==s' | cut -f2- | sed 's|.*/||; s|\.png$||')
+                  [ -z "$list" ] && continue
+                  c=$(echo "$list" | wc -l)
+                  if [ "$c" -gt 30 ]; then echo; echo "$c sheets ${k#*:}"   # long lists: count only
+                  else echo; echo "${k#*:}:"; echo "$list" | sed 's/^/- /'; fi
+                done
+              fi
+              echo
+            done
+            [ -n "$PREV" ] && echo "Changes since $PREV." || echo "First release."
+            echo
+            echo "For simulation only, not for real-world navigation. / Nur für die Simulation, nicht für die reale Navigation."
+          } > notes.md
+          cat notes.md
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/*.zip --clobber
+            gh release edit "$TAG" --notes-file notes.md
+          else
+            gh release create "$TAG" dist/*.zip --title "$TAG" --notes-file notes.md --target "$GITHUB_SHA"
+          fi

@@ -1,0 +1,34 @@
+# Friendly note on pull requests that change generated chart files (png/, svg/).
+# pull_request_target runs in the context of this repository, so it may comment on pull requests from forks.
+# It never checks out or runs code of the pull request.
+name: Generated files note
+on:
+  pull_request_target:
+    types: [opened]
+    paths: ['*/png/**', '*/svg/**']
+permissions:
+  pull-requests: write
+  issues: write
+jobs:
+  note:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const url = context.payload.repository.html_url;
+            const body = [
+              'Thank you for your pull request! :pray:',
+              '',
+              'The chart files in `png/` and `svg/` are generated automatically, and every run writes them again, so changes to them would be lost and cannot be merged. ' +
+              `Could you please describe the error in an [issue](${url}/issues/new/choose) instead? It will then be fixed in the generator, for this chart and every other chart with the same problem.`,
+              '',
+              '---',
+              '',
+              'Danke für deinen Pull Request! :pray:',
+              '',
+              'Die Kartendateien in `png/` und `svg/` werden automatisch erzeugt und bei jedem Lauf neu geschrieben, Änderungen daran gingen verloren und können deshalb nicht übernommen werden. ' +
+              `Magst du den Fehler stattdessen in einem [Issue](${url}/issues/new/choose) beschreiben? Er wird dann im Generator behoben, für diese Karte und alle anderen mit demselben Problem.`,
+            ].join('\n');
+            await github.rest.issues.createComment({ ...context.repo, issue_number: context.issue.number, body });
+            await github.rest.issues.addLabels({ ...context.repo, issue_number: context.issue.number, labels: ['generated-files'] });
