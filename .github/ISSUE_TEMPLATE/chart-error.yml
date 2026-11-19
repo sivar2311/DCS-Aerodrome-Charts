@@ -13,6 +13,7 @@ body:
       label: Map / Karte
       options:
         - Germany Cold War
+        - Kola
         - Persian Gulf
         - Syria
     validations:

@@ -11,6 +11,7 @@ Aerodrome charts (GND) and parking position charts (PAR) for the airfields of th
 | Map | Airfields | Sheets | Overview | Download |
 |---|---|---|---|---|
 | [Germany Cold War](GermanyColdWar/README.md) | 83 | 209 | <img src="GermanyColdWar/png/00_01_General_Map.png" width="150"> | [GermanyColdWar.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/GermanyColdWar.zip) |
+| [Kola](Kola/README.md) | 33 | 80 | <img src="Kola/png/00_01_General_Map.png" width="150"> | [Kola.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/Kola.zip) |
 | [Persian Gulf](PersianGulf/README.md) | 28 | 73 | <img src="PersianGulf/png/00_01_General_Map.png" width="150"> | [PersianGulf.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/PersianGulf.zip) |
 | [Syria](Syria/README.md) | 73 | 203 | <img src="Syria/png/00_01_General_Map.png" width="150"> | [Syria.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/Syria.zip) |
 
