@@ -15,6 +15,10 @@ Flugplatzkarten (GND) und Parkpositionskarten (PAR) für die Flugplätze der DCS
 | [Persian Gulf](PersianGulf/README.de.md) | 28 | 73 | <img src="PersianGulf/png/00_01_General_Map.png" width="150"> | [PersianGulf.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/PersianGulf.zip) |
 | [Syria](Syria/README.de.md) | 73 | 203 | <img src="Syria/png/00_01_General_Map.png" width="150"> | [Syria.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/Syria.zip) |
 
+## Änderungen
+
+Was sich an welcher Karte geändert hat: [CHANGELOG.md](CHANGELOG.md), Details im Changelog der jeweiligen Karte.
+
 ## Download
 
 Jedes [Release](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest) enthält je Karte eine ZIP-Datei mit allen PNG-Blättern, fertig für das Kneeboard. Die SVG-Dateien liegen in den Kartenordnern dieses Repositorys.

@@ -25,7 +25,7 @@ Platzkarten (GND) und Parkpositionskarten (PAR) für alle Flugplätze mit befest
 | `TYP` | `GND`: Platzkarte (Aerodrome Chart). `PAR`: Parkpositionen (Aircraft Parking Positions). |
 | `KENNUNG` | ICAO-Code oder Ersatzkennung (siehe unten) |
 | `Name` | Name des Platzes, wie er in DCS heißt |
-| `Zweitname` | heutiger Name, falls er vom DCS-Namen abweicht, z. B. `Beirut - Rafic Hariri` |
+| `Zweitname` | heutiger Name, falls er vom DCS-Namen abweicht, z. B. `Rene Mouawad - Kleyate` |
 | `_Pn` | Blatt n, wenn ein Platz mehrere Blätter hat: P1 ist die Platzkarte, ab P2 kommen die Parkpositionen |
 
 Oben auf jedem Blatt steht der Verweis für die Kartenmappe, z. B. `GND 59 · P2/6` (Bodenkarten, Platz 59, Blatt 2 von 6).

@@ -15,6 +15,10 @@ Aerodrome charts (GND) and parking position charts (PAR) for the airfields of th
 | [Persian Gulf](PersianGulf/README.md) | 28 | 73 | <img src="PersianGulf/png/00_01_General_Map.png" width="150"> | [PersianGulf.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/PersianGulf.zip) |
 | [Syria](Syria/README.md) | 73 | 203 | <img src="Syria/png/00_01_General_Map.png" width="150"> | [Syria.zip](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest/download/Syria.zip) |
 
+## Changes
+
+What changed in which map: [CHANGELOG.md](CHANGELOG.md), with details in the changelog of each map.
+
 ## Download
 
 Each [release](https://github.com/sivar2311/DCS-Aerodrome-Charts/releases/latest) has one ZIP file per map with all PNG sheets, ready for the kneeboard. The SVG files are in the map folders of this repository.

@@ -25,7 +25,7 @@ These are aerodrome charts (GND) and parking position charts (PAR) for every air
 | `TYPE` | `GND`: aerodrome chart. `PAR`: aircraft parking positions. |
 | `CODE` | ICAO code or substitute code (see below) |
 | `Name` | Name of the airfield as used in DCS |
-| `Second name` | Current name, if it differs from the DCS name, e.g. `Beirut - Rafic Hariri` |
+| `Second name` | Current name, if it differs from the DCS name, e.g. `Rene Mouawad - Kleyate` |
 | `_Pn` | Sheet n, when an airfield has several sheets: P1 is the aerodrome chart, the parking positions follow from P2 |
 
 At the top of every sheet is the reference for the chart binder, e.g. `GND 59 · P2/6` (ground charts, airfield 59, sheet 2 of 6).
